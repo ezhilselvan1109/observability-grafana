@@ -1,0 +1,64 @@
+{
+  "title": "API Gateway Logs",
+  "uid": "gateway_logs",
+  "schemaVersion": 36,
+  "timezone": "browser",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Gateway Errors",
+      "type": "logs",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "Loki"
+      },
+      "targets": [
+        {
+          "expr": "{service=\"api-gateway\"} |= \"level\":\"ERROR\"",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "showTime": true,
+        "showLabels": false,
+        "showCommonLabels": false,
+        "wrapLogMessage": true,
+        "sortOrder": "Descending"
+      }
+    },
+    {
+      "id": 2,
+      "title": "All Gateway Logs",
+      "type": "logs",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "Loki"
+      },
+      "targets": [
+        {
+          "expr": "{service=\"api-gateway\"}",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "showTime": true,
+        "showLabels": false,
+        "showCommonLabels": false,
+        "wrapLogMessage": true,
+        "sortOrder": "Descending"
+      }
+    }
+  ]
+}
